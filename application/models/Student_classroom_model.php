@@ -27,7 +27,15 @@ class Student_classroom_model extends CI_Model
         $this->db->from('student_classroom');
         $this->db->join('students', 'students.id = student_classroom.student_id');
         $this->db->join('classrooms', 'classrooms.id = student_classroom.classroom_id');
-        return $this->db->get()->result();;
+        return $this->db->get()->result();
+    }
+
+    function get_orphan_students() {
+        $sql ="SELECT * FROM students WHERE students.id NOT IN (SELECT students.id FROM student_classroom
+JOIN students ON students.id = student_classroom.student_id
+JOIN classrooms ON classrooms.id = student_classroom.classroom_id)";
+return $this->db->query($sql)->result();
+        
     }
 
     // get data by id

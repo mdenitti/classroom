@@ -10,8 +10,8 @@
         </style>
     </head>
     <body>
-    <?php //print_r($merge); ?>
-          <h2 style="margin-top:0px">Student_classroom List</h2>
+    <?php print_r($nogo); ?>
+          <h2 style="margin-top:0px">Overzicht bezetting</h2>
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
                 <?php echo anchor(site_url('student_classroom/create'),'Create', 'class="btn btn-primary"'); ?>
@@ -70,6 +70,7 @@
             }
             ?>
         </table>
+        <h2>Studenten nog niet toegekend aan lokaal:</h2>
         <div class="row">
             <div class="col-md-6">
                 <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>

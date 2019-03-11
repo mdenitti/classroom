@@ -32,6 +32,7 @@ class Student_classroom extends CI_Controller
         $config['total_rows'] = $this->Student_classroom_model->total_rows($q);
         $student_classroom = $this->Student_classroom_model->get_limit_data($config['per_page'], $start, $q);
         $merge = $this->Student_classroom_model->get_all_merge();
+        $nogo = $this->Student_classroom_model->get_orphan_students();
         // $classrooms =$this->Classrooms_model->get_all();
         $this->load->library('pagination');
         $this->pagination->initialize($config);
@@ -39,6 +40,7 @@ class Student_classroom extends CI_Controller
         $data = array(
             'student_classroom_data' => $student_classroom,
             'merge' =>$merge,
+            'nogo' =>$nogo,
             'q' => $q,
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
