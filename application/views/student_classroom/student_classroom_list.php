@@ -10,7 +10,7 @@
         </style>
     </head>
     <body>
-    <?php print_r($nogo); ?>
+    <?php // print_r($nogo); ?>
           <h2 style="margin-top:0px">Overzicht bezetting</h2>
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
@@ -71,6 +71,13 @@
             ?>
         </table>
         <h2>Studenten nog niet toegekend aan lokaal:</h2>
+        <?php
+            foreach ($nogo as $nog)
+            {
+            echo $nog->name."<hr>";
+            }
+                ?>
+        <br>
         <div class="row">
             <div class="col-md-6">
                 <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
