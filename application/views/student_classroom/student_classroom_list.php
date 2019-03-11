@@ -10,9 +10,8 @@
         </style>
     </head>
     <body>
-    <?php print_r($students) ?>;
-    <?php print_r($classrooms) ?>;
-        <h2 style="margin-top:0px">Student_classroom List</h2>
+    <?php //print_r($merge); ?>
+          <h2 style="margin-top:0px">Student_classroom List</h2>
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
                 <?php echo anchor(site_url('student_classroom/create'),'Create', 'class="btn btn-primary"'); ?>
@@ -50,13 +49,13 @@
 		<th>Student Id</th>
 		<th>Action</th>
             </tr><?php
-            foreach ($student_classroom_data as $student_classroom)
+            foreach ($merge as $student_classroom)
             {
                 ?>
                 <tr>
 			<td width="80px"><?php echo ++$start ?></td>
-			<td><?php echo $student_classroom->classroom_id ?></td>
-			<td><?php echo $student_classroom->student_id ?></td>
+			<td><?php echo $student_classroom->room ?></td>
+			<td><?php echo $student_classroom->name ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('student_classroom/read/'.$student_classroom->id),'Read'); 

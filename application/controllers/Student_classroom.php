@@ -9,8 +9,8 @@ class Student_classroom extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Student_classroom_model');
-        $this->load->model('Students_model');
-        $this->load->model('Classrooms_model');
+        //$this->load->model('Students_model');
+        //$this->load->model('Classrooms_model');
         $this->load->library('form_validation');
     }
 
@@ -31,15 +31,14 @@ class Student_classroom extends CI_Controller
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->Student_classroom_model->total_rows($q);
         $student_classroom = $this->Student_classroom_model->get_limit_data($config['per_page'], $start, $q);
-        $students = $this->Students_model->get_all();
-        $classrooms =$this->Classrooms_model->get_all();
+        $merge = $this->Student_classroom_model->get_all_merge();
+        // $classrooms =$this->Classrooms_model->get_all();
         $this->load->library('pagination');
         $this->pagination->initialize($config);
 
         $data = array(
             'student_classroom_data' => $student_classroom,
-            'students' =>$students,
-            'classrooms'=>$classrooms,
+            'merge' =>$merge,
             'q' => $q,
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],

@@ -22,6 +22,14 @@ class Student_classroom_model extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
+    function get_all_merge() {
+        $this->db->select('*');
+        $this->db->from('student_classroom');
+        $this->db->join('students', 'students.id = student_classroom.student_id');
+        $this->db->join('classrooms', 'classrooms.id = student_classroom.classroom_id');
+        return $this->db->get()->result();;
+    }
+
     // get data by id
     function get_by_id($id)
     {
