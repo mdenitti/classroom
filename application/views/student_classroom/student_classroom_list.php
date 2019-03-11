@@ -10,6 +10,8 @@
         </style>
     </head>
     <body>
+    <?php print_r($students) ?>;
+    <?php print_r($classrooms) ?>;
         <h2 style="margin-top:0px">Student_classroom List</h2>
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
